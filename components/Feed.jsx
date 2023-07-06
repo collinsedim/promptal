@@ -54,7 +54,6 @@ const Feed = () => {
       const filteredTags = posts.filter((p) => p.tag.includes(tags));
 
       setFilteredPosts(filteredTags);
-      // console.log(filteredTags);
     } else {
       setFilteredPosts(posts);
     }
