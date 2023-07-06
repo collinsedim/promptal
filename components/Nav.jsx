@@ -28,7 +28,7 @@ const Nav = () => {
           src="/./assets/images/ai.png"
           width={50}
           height={50}
-          className="object-contain stay_up hover:animate-ping"
+          className="object-contain stay_up hover:animate-bounce"
         />
         <p className="logo_text stay_up">Promptpal</p>
       </Link>

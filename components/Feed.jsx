@@ -2,6 +2,7 @@
 
 import { debounce } from "lodash";
 import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import PromptCard from "./PromptCard";
 
 const PromptCardList = ({ sortedData, handleTagClick }) => {
@@ -19,6 +20,8 @@ const PromptCardList = ({ sortedData, handleTagClick }) => {
 };
 
 const Feed = () => {
+  const { data: session } = useSession();
+
   const [searchText, setSearchText] = useState("");
   const [posts, setPosts] = useState([]);
   const [filteredPosts, setFilteredPosts] = useState([]);
@@ -77,6 +80,18 @@ const Feed = () => {
   useEffect(() => {
     showPromptsByTag();
   }, [tags]);
+
+  if (!session) {
+    return (
+      <p className="mt-20 font-bold font-satoshi text-red-400 group">
+        Please{" "}
+        <span className="group-hover:animate-pulse group-hover:text-red-800">
+          sign-in
+        </span>{" "}
+        to access tons of user-shared prompts!
+      </p>
+    );
+  }
 
   return (
     <div className="feed">
